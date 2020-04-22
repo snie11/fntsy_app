@@ -17,10 +17,49 @@ class LoginViewController: UIViewController {
     @IBOutlet var loginButton : UIButton?
     @IBOutlet var emailTextField : UITextField?
     @IBOutlet var passwordTextField : UITextField?
+    var username : String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
         bg?.image = UIImage(named: "bg2")
         loginButton?.setImage(UIImage(named:"login_button"), for: .normal)
+    }
+    
+    @IBAction func loginUser() {
+        let loginManager = FirebaseAuthManager()
+//        let dbManager = FirebaseDataManager()
+        if let email = emailTextField?.text, let password = passwordTextField?.text {
+            loginManager.loginUser(email: email, password: password) {[weak self] (success) in
+                guard let `self` = self else { return }
+                var message: String = ""
+                if (success) {
+//                    dbManager.setUsername(email: email)
+//                    self.username = dbManager.getUsername()
+                    self.performSegue(withIdentifier: "loginToDashboard", sender: nil)
+                } else {
+                    message = "Incorrect email or password."
+                    let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as UIViewController
+        if segue.identifier == "loginToDashboard" {
+            let detailVC = destinationVC as! DashboardViewController
+            detailVC.email = emailTextField!.text!
+            print("toDashboard with email \(emailTextField!.text)")
+        }
+        
+        
+//        else if segue.identifier == "toACVC" {
+//            print("toDashboard")
+//            let navVC = destinationVC as! UINavigationController
+//            let addContactVC = navVC.topViewController as! AddContactViewController
+//            addContactVC.delegate = self
+//        }
     }
 }

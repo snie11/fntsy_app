@@ -22,4 +22,15 @@ class FirebaseAuthManager {
             }
         }
     }
+    
+    func loginUser(email: String, password: String, completionBlock: @escaping (_ success: Bool) -> Void) {
+        Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
+            if let user = authResult?.user {
+                print(user)
+                completionBlock(true)
+            } else {
+                completionBlock(false)
+            }
+        }
+    }
 }

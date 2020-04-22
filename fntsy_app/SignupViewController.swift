@@ -11,6 +11,13 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
+protocol DataDelegate: class {
+    func setUsername(email : String)
+    func setUsernames()
+    func getUsername() -> String
+    func getUsernames() -> [String]
+}
+
 class SignupViewController: UIViewController {
 
     @IBOutlet var bg : UIImageView?
@@ -20,41 +27,65 @@ class SignupViewController: UIViewController {
     @IBOutlet var passwordTextField : UITextField?
     var passText: String?
     
+    var ref: DatabaseReference!
+    var refHandle: DatabaseHandle!
+    
+    var delegate: DataDelegate?
+    
+    var usernames: [String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         bg?.image = UIImage(named: "bg2")
         loginButton?.setImage(UIImage(named:"signin_button"), for: .normal)
+//        delegate = FirebaseDataManager()
+//        let dispatchQueue = DispatchQueue(label: "loadUsers", qos: .background)
+//        dispatchQueue.async{
+//            self.usernames = (self.delegate?.getUsernames())!
+//        }
+        
     }
     
     @IBAction func createNewUser() {
         let signUpManager = FirebaseAuthManager()
-        if let email = emailTextField?.text, let password = passwordTextField?.text {
-            signUpManager.createUser(email: email, password: password) {[weak self] (success) in
-                guard let `self` = self else { return }
-                var message: String = ""
-                if (success) {
-                    message = "User was sucessfully created."
-                } else {
-                    message = "There was an error."
-                }
-                let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-                if (success) {
-                    alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { _ in
-                        self.performSegue(withIdentifier: "toDashboard", sender: nil)
-                    }))
-                } else {
-                    alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                }
+        if let username = nameTextField?.text {
+            print(username)
+            dump(usernames)
+            if (usernames.contains(username)) {
+                let alertController = UIAlertController(title: nil, message: "Username already exists.", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                 self.present(alertController, animated: true, completion: nil)
+            } else {
+                if let email = emailTextField?.text, let password = passwordTextField?.text {
+                    signUpManager.createUser(email: email, password: password) {[weak self] (success) in
+                        guard let `self` = self else { return }
+                        var message: String = ""
+                        if (success) {
+                            message = "User was sucessfully created."
+                        } else {
+                            message = "There was an error."
+                        }
+                        let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+                        if (success) {
+                            alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { _ in
+                                self.performSegue(withIdentifier: "signupToDashboard", sender: nil)
+                            }))
+                        } else {
+                            alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                        }
+                        self.present(alertController, animated: true, completion: nil)
+                    }
+                }
             }
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination as UIViewController
-        if segue.identifier == "toDashboard" {
-            print("toDashboard")
+        if segue.identifier == "signupToDashboard" {
+            let detailVC = destinationVC as! DashboardViewController
+            detailVC.email = emailTextField!.text!
+            print("toDashboard with email \(emailTextField!.text)")
         }
         
 //        else if segue.identifier == "toACVC" {
@@ -74,5 +105,7 @@ class SignupViewController: UIViewController {
 //        passwordTextField?.text = String(repeating: "*", count: (passwordTextField?.text ?? "").count)
 //    }
 //
+    
+    
 }
 
