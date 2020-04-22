@@ -22,6 +22,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bg?.image = UIImage(named: "bg2")
+        emailTextField!.text = "selina.nie11@gmail.com"
+        passwordTextField!.text = "hello123"
         loginButton?.setImage(UIImage(named:"login_button"), for: .normal)
     }
     
