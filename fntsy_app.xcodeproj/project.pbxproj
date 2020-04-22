@@ -3,10 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		61C634B61E97FD4DB2516068 /* Pods_fntsy_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62ACA1CAAE682B305E4A76A4 /* Pods_fntsy_app.framework */; };
+		6D3D37FD244FB9B700466E0D /* FirebaseAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3D37FC244FB9B700466E0D /* FirebaseAuthManager.swift */; };
+		6D904AED24480DAA001E6BC0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D904AEC24480DAA001E6BC0 /* LoginViewController.swift */; };
+		6D904AEF24480FB3001E6BC0 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D904AEE24480FB3001E6BC0 /* SignupViewController.swift */; };
+		6D904AF124481397001E6BC0 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D904AF024481397001E6BC0 /* DashboardViewController.swift */; };
 		6DBFB33A244418DB006C4309 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBFB339244418DB006C4309 /* AppDelegate.swift */; };
 		6DBFB33C244418DB006C4309 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBFB33B244418DB006C4309 /* SceneDelegate.swift */; };
 		6DBFB33E244418DB006C4309 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBFB33D244418DB006C4309 /* ViewController.swift */; };
@@ -15,6 +20,18 @@
 		6DBFB346244418DE006C4309 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DBFB344244418DE006C4309 /* LaunchScreen.storyboard */; };
 		6DBFB351244418DE006C4309 /* fntsy_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBFB350244418DE006C4309 /* fntsy_appTests.swift */; };
 		6DBFB35C244418DE006C4309 /* fntsy_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBFB35B244418DE006C4309 /* fntsy_appUITests.swift */; };
+		6DBFB36A24441A6B006C4309 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DBFB36924441A6B006C4309 /* GoogleService-Info.plist */; };
+		6DBFB374244420C7006C4309 /* Catamaran-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6DBFB36B244420C5006C4309 /* Catamaran-Light.ttf */; };
+		6DBFB375244420C7006C4309 /* Catamaran-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6DBFB36C244420C5006C4309 /* Catamaran-Regular.ttf */; };
+		6DBFB376244420C7006C4309 /* Catamaran-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6DBFB36D244420C5006C4309 /* Catamaran-SemiBold.ttf */; };
+		6DBFB377244420C7006C4309 /* Catamaran-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6DBFB36E244420C6006C4309 /* Catamaran-Bold.ttf */; };
+		6DBFB378244420C7006C4309 /* Catamaran-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6DBFB36F244420C6006C4309 /* Catamaran-Thin.ttf */; };
+		6DBFB379244420C7006C4309 /* Catamaran-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6DBFB370244420C6006C4309 /* Catamaran-ExtraBold.ttf */; };
+		6DBFB37A244420C7006C4309 /* Catamaran-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6DBFB371244420C6006C4309 /* Catamaran-ExtraLight.ttf */; };
+		6DBFB37B244420C7006C4309 /* Catamaran-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6DBFB372244420C7006C4309 /* Catamaran-Black.ttf */; };
+		6DBFB37C244420C7006C4309 /* Catamaran-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6DBFB373244420C7006C4309 /* Catamaran-Medium.ttf */; };
+		BA2EBB34689A2DF595A39ED8 /* Pods_fntsy_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D9355E619752A37E7430B8 /* Pods_fntsy_appTests.framework */; };
+		E6494FCF6F059EE846DE4C79 /* Pods_fntsy_app_fntsy_appUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A56B4CCEC82DD26D0E2AAC /* Pods_fntsy_app_fntsy_appUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +52,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02288DFD7C0FB5EDC7F70EB5 /* Pods-fntsy_app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fntsy_app.debug.xcconfig"; path = "Target Support Files/Pods-fntsy_app/Pods-fntsy_app.debug.xcconfig"; sourceTree = "<group>"; };
+		230E97B9209C528A14CB8115 /* Pods-fntsy_app-fntsy_appUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fntsy_app-fntsy_appUITests.debug.xcconfig"; path = "Target Support Files/Pods-fntsy_app-fntsy_appUITests/Pods-fntsy_app-fntsy_appUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		24A8AC7DD24EA5A4B0F0327F /* Pods-fntsy_appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fntsy_appTests.debug.xcconfig"; path = "Target Support Files/Pods-fntsy_appTests/Pods-fntsy_appTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2D63EF1147A1791243CE3343 /* Pods-fntsy_app-fntsy_appUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fntsy_app-fntsy_appUITests.release.xcconfig"; path = "Target Support Files/Pods-fntsy_app-fntsy_appUITests/Pods-fntsy_app-fntsy_appUITests.release.xcconfig"; sourceTree = "<group>"; };
+		32D9355E619752A37E7430B8 /* Pods_fntsy_appTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fntsy_appTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		62ACA1CAAE682B305E4A76A4 /* Pods_fntsy_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fntsy_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D3D37FC244FB9B700466E0D /* FirebaseAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthManager.swift; sourceTree = "<group>"; };
+		6D904AEC24480DAA001E6BC0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		6D904AEE24480FB3001E6BC0 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		6D904AF024481397001E6BC0 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		6DBFB336244418DB006C4309 /* fntsy_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fntsy_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DBFB339244418DB006C4309 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6DBFB33B244418DB006C4309 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +76,19 @@
 		6DBFB357244418DE006C4309 /* fntsy_appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fntsy_appUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DBFB35B244418DE006C4309 /* fntsy_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fntsy_appUITests.swift; sourceTree = "<group>"; };
 		6DBFB35D244418DE006C4309 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6DBFB36924441A6B006C4309 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6DBFB36B244420C5006C4309 /* Catamaran-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Catamaran-Light.ttf"; sourceTree = "<group>"; };
+		6DBFB36C244420C5006C4309 /* Catamaran-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Catamaran-Regular.ttf"; sourceTree = "<group>"; };
+		6DBFB36D244420C5006C4309 /* Catamaran-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Catamaran-SemiBold.ttf"; sourceTree = "<group>"; };
+		6DBFB36E244420C6006C4309 /* Catamaran-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Catamaran-Bold.ttf"; sourceTree = "<group>"; };
+		6DBFB36F244420C6006C4309 /* Catamaran-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Catamaran-Thin.ttf"; sourceTree = "<group>"; };
+		6DBFB370244420C6006C4309 /* Catamaran-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Catamaran-ExtraBold.ttf"; sourceTree = "<group>"; };
+		6DBFB371244420C6006C4309 /* Catamaran-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Catamaran-ExtraLight.ttf"; sourceTree = "<group>"; };
+		6DBFB372244420C7006C4309 /* Catamaran-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Catamaran-Black.ttf"; sourceTree = "<group>"; };
+		6DBFB373244420C7006C4309 /* Catamaran-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Catamaran-Medium.ttf"; sourceTree = "<group>"; };
+		B7D645B59B256CB13FD5D82B /* Pods-fntsy_app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fntsy_app.release.xcconfig"; path = "Target Support Files/Pods-fntsy_app/Pods-fntsy_app.release.xcconfig"; sourceTree = "<group>"; };
+		DB7192A2C68602F6CAC16A1A /* Pods-fntsy_appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fntsy_appTests.release.xcconfig"; path = "Target Support Files/Pods-fntsy_appTests/Pods-fntsy_appTests.release.xcconfig"; sourceTree = "<group>"; };
+		F1A56B4CCEC82DD26D0E2AAC /* Pods_fntsy_app_fntsy_appUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fntsy_app_fntsy_appUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61C634B61E97FD4DB2516068 /* Pods_fntsy_app.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA2EBB34689A2DF595A39ED8 /* Pods_fntsy_appTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +112,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6494FCF6F059EE846DE4C79 /* Pods_fntsy_app_fntsy_appUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2BC7425656F7ECEBBED568CE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				62ACA1CAAE682B305E4A76A4 /* Pods_fntsy_app.framework */,
+				F1A56B4CCEC82DD26D0E2AAC /* Pods_fntsy_app_fntsy_appUITests.framework */,
+				32D9355E619752A37E7430B8 /* Pods_fntsy_appTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6DBFB32D244418DB006C4309 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +136,8 @@
 				6DBFB34F244418DE006C4309 /* fntsy_appTests */,
 				6DBFB35A244418DE006C4309 /* fntsy_appUITests */,
 				6DBFB337244418DB006C4309 /* Products */,
+				C8B819224822CB9FF8C6798B /* Pods */,
+				2BC7425656F7ECEBBED568CE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,9 +157,15 @@
 				6DBFB339244418DB006C4309 /* AppDelegate.swift */,
 				6DBFB33B244418DB006C4309 /* SceneDelegate.swift */,
 				6DBFB33D244418DB006C4309 /* ViewController.swift */,
+				6D3D37FC244FB9B700466E0D /* FirebaseAuthManager.swift */,
+				6D904AEE24480FB3001E6BC0 /* SignupViewController.swift */,
+				6D904AEC24480DAA001E6BC0 /* LoginViewController.swift */,
+				6D904AF024481397001E6BC0 /* DashboardViewController.swift */,
 				6DBFB33F244418DB006C4309 /* Main.storyboard */,
 				6DBFB342244418DE006C4309 /* Assets.xcassets */,
+				6DBFB37D244420DA006C4309 /* fonts */,
 				6DBFB344244418DE006C4309 /* LaunchScreen.storyboard */,
+				6DBFB36924441A6B006C4309 /* GoogleService-Info.plist */,
 				6DBFB347244418DE006C4309 /* Info.plist */,
 			);
 			path = fntsy_app;
@@ -128,6 +189,35 @@
 			path = fntsy_appUITests;
 			sourceTree = "<group>";
 		};
+		6DBFB37D244420DA006C4309 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				6DBFB372244420C7006C4309 /* Catamaran-Black.ttf */,
+				6DBFB36E244420C6006C4309 /* Catamaran-Bold.ttf */,
+				6DBFB370244420C6006C4309 /* Catamaran-ExtraBold.ttf */,
+				6DBFB371244420C6006C4309 /* Catamaran-ExtraLight.ttf */,
+				6DBFB36B244420C5006C4309 /* Catamaran-Light.ttf */,
+				6DBFB373244420C7006C4309 /* Catamaran-Medium.ttf */,
+				6DBFB36C244420C5006C4309 /* Catamaran-Regular.ttf */,
+				6DBFB36D244420C5006C4309 /* Catamaran-SemiBold.ttf */,
+				6DBFB36F244420C6006C4309 /* Catamaran-Thin.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
+		C8B819224822CB9FF8C6798B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				02288DFD7C0FB5EDC7F70EB5 /* Pods-fntsy_app.debug.xcconfig */,
+				B7D645B59B256CB13FD5D82B /* Pods-fntsy_app.release.xcconfig */,
+				230E97B9209C528A14CB8115 /* Pods-fntsy_app-fntsy_appUITests.debug.xcconfig */,
+				2D63EF1147A1791243CE3343 /* Pods-fntsy_app-fntsy_appUITests.release.xcconfig */,
+				24A8AC7DD24EA5A4B0F0327F /* Pods-fntsy_appTests.debug.xcconfig */,
+				DB7192A2C68602F6CAC16A1A /* Pods-fntsy_appTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +225,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6DBFB360244418DE006C4309 /* Build configuration list for PBXNativeTarget "fntsy_app" */;
 			buildPhases = (
+				28825E69513AC591D9239C5D /* [CP] Check Pods Manifest.lock */,
 				6DBFB332244418DB006C4309 /* Sources */,
 				6DBFB333244418DB006C4309 /* Frameworks */,
 				6DBFB334244418DB006C4309 /* Resources */,
+				919FD169ABFEED0B8E460AAD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -152,6 +244,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6DBFB363244418DE006C4309 /* Build configuration list for PBXNativeTarget "fntsy_appTests" */;
 			buildPhases = (
+				1C6B0099CA00F349A354DDFC /* [CP] Check Pods Manifest.lock */,
 				6DBFB348244418DE006C4309 /* Sources */,
 				6DBFB349244418DE006C4309 /* Frameworks */,
 				6DBFB34A244418DE006C4309 /* Resources */,
@@ -170,9 +263,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6DBFB366244418DE006C4309 /* Build configuration list for PBXNativeTarget "fntsy_appUITests" */;
 			buildPhases = (
+				3898B546AA0A03AB16185011 /* [CP] Check Pods Manifest.lock */,
 				6DBFB353244418DE006C4309 /* Sources */,
 				6DBFB354244418DE006C4309 /* Frameworks */,
 				6DBFB355244418DE006C4309 /* Resources */,
+				0F5FB392AFED35FBA2892D9B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -232,9 +327,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DBFB375244420C7006C4309 /* Catamaran-Regular.ttf in Resources */,
+				6DBFB374244420C7006C4309 /* Catamaran-Light.ttf in Resources */,
+				6DBFB378244420C7006C4309 /* Catamaran-Thin.ttf in Resources */,
+				6DBFB379244420C7006C4309 /* Catamaran-ExtraBold.ttf in Resources */,
+				6DBFB376244420C7006C4309 /* Catamaran-SemiBold.ttf in Resources */,
 				6DBFB346244418DE006C4309 /* LaunchScreen.storyboard in Resources */,
+				6DBFB377244420C7006C4309 /* Catamaran-Bold.ttf in Resources */,
+				6DBFB36A24441A6B006C4309 /* GoogleService-Info.plist in Resources */,
+				6DBFB37C244420C7006C4309 /* Catamaran-Medium.ttf in Resources */,
 				6DBFB343244418DE006C4309 /* Assets.xcassets in Resources */,
+				6DBFB37B244420C7006C4309 /* Catamaran-Black.ttf in Resources */,
 				6DBFB341244418DB006C4309 /* Main.storyboard in Resources */,
+				6DBFB37A244420C7006C4309 /* Catamaran-ExtraLight.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,12 +359,119 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0F5FB392AFED35FBA2892D9B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-fntsy_app-fntsy_appUITests/Pods-fntsy_app-fntsy_appUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-fntsy_app-fntsy_appUITests/Pods-fntsy_app-fntsy_appUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-fntsy_app-fntsy_appUITests/Pods-fntsy_app-fntsy_appUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1C6B0099CA00F349A354DDFC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-fntsy_appTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		28825E69513AC591D9239C5D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-fntsy_app-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3898B546AA0A03AB16185011 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-fntsy_app-fntsy_appUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		919FD169ABFEED0B8E460AAD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-fntsy_app/Pods-fntsy_app-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-fntsy_app/Pods-fntsy_app-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-fntsy_app/Pods-fntsy_app-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6DBFB332244418DB006C4309 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D904AED24480DAA001E6BC0 /* LoginViewController.swift in Sources */,
+				6D3D37FD244FB9B700466E0D /* FirebaseAuthManager.swift in Sources */,
+				6D904AF124481397001E6BC0 /* DashboardViewController.swift in Sources */,
 				6DBFB33E244418DB006C4309 /* ViewController.swift in Sources */,
+				6D904AEF24480FB3001E6BC0 /* SignupViewController.swift in Sources */,
 				6DBFB33A244418DB006C4309 /* AppDelegate.swift in Sources */,
 				6DBFB33C244418DB006C4309 /* SceneDelegate.swift in Sources */,
 			);
@@ -432,6 +644,7 @@
 		};
 		6DBFB361244418DE006C4309 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 02288DFD7C0FB5EDC7F70EB5 /* Pods-fntsy_app.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -450,6 +663,7 @@
 		};
 		6DBFB362244418DE006C4309 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7D645B59B256CB13FD5D82B /* Pods-fntsy_app.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -468,6 +682,7 @@
 		};
 		6DBFB364244418DE006C4309 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24A8AC7DD24EA5A4B0F0327F /* Pods-fntsy_appTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -490,6 +705,7 @@
 		};
 		6DBFB365244418DE006C4309 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DB7192A2C68602F6CAC16A1A /* Pods-fntsy_appTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -512,6 +728,7 @@
 		};
 		6DBFB367244418DE006C4309 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 230E97B9209C528A14CB8115 /* Pods-fntsy_app-fntsy_appUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -532,6 +749,7 @@
 		};
 		6DBFB368244418DE006C4309 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D63EF1147A1791243CE3343 /* Pods-fntsy_app-fntsy_appUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
