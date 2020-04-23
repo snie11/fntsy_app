@@ -42,8 +42,8 @@ class LeagueDashboardViewController: UIViewController {
     var league : League?
     var id : Int = 0
     var topScore : Int = 0
-    var topScorePlayer : String = "Loading ..."
-    var topScoreTeam : String = "Loading ..."
+    var topScorePlayer : String = "No points yet."
+    var topScoreTeam : String = "No team yet."
     
     var scoreMap : [String : Int] = [:]
     
@@ -82,6 +82,10 @@ class LeagueDashboardViewController: UIViewController {
                 }
             }
             
+            if (self.scoreMap.count == 0) {
+                scoreField = "No ranks, click below to add."
+            }
+            
             dump(self.scoreMap)
             
             self.rankings?.text = scoreField
@@ -95,11 +99,11 @@ class LeagueDashboardViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination as UIViewController
-        if segue.identifier == "DetailsToPoints" {
+        if segue.identifier == "LeagueDashtoEditPts" {
             // send whole league object
-//            let detailVC = destinationVC as! DashboardViewController
-//            detailVC.email = email
-//            detailVC.leaguename = leaguename!.text!
+            let detailVC = destinationVC as! EditPointsViewController
+            detailVC.league = league
+            detailVC.leagueid = id
 //            detailVC.leaguename = leaguecode!.text!
             print("to points")
         }
@@ -109,8 +113,8 @@ class LeagueDashboardViewController: UIViewController {
         refHandle = ref.child("leagues/\(id)").observe(DataEventType.value, with: { (snapshot) in
             if let l = snapshot.value as? NSDictionary {
                 print("got here 1")
-//                dump(l)
-                if let leaguenm = l["leaguename"] as? String, let leaguecode = l["leaguecode"] as? Int, let ps = l["players"] as? [NSDictionary], let us = l["users"] as? [NSDictionary] {
+                dump(l)
+                if let leaguenm = l["leaguename"] as? String, let leaguecode = l["leaguecode"] as? String, let ps = l["players"] as? [NSDictionary], let us = l["users"] as? [NSDictionary] {
                     print("got here 2")
                     var players : [Player] = []
                     var users : [String] = []
@@ -137,6 +141,11 @@ class LeagueDashboardViewController: UIViewController {
                                 
                             let player1 = Player(playername: pname, playerdescription: pdescription, playerteam: pteam, totalpoints: ptotalpts, points: points)
                             players.append(player1)
+                            
+                        } else if let pname = p["name"] as? String, let pdescription = p["description"] as? String, let ptotalpts = p["totalpts"] as? Int {
+                            print("got here no team assignments")
+                            let player1 = Player(playername: pname, playerdescription: pdescription, playerteam: "No team yet.", totalpoints: ptotalpts, points: [])
+                            players.append(player1)
                         }
                     }
                     
@@ -146,7 +155,7 @@ class LeagueDashboardViewController: UIViewController {
                         }
                     }
                     
-                    self.league = League(leaguename: leaguenm, leaguecode: "\(leaguecode)", players: players, users: users)
+                    self.league = League(leaguename: leaguenm, leaguecode: leaguecode, players: players, users: users)
                     self.updateFields()
                 }
             }

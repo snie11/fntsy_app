@@ -91,7 +91,7 @@ class AssembleLineupViewController: UIViewController, UITableViewDelegate, UITab
         // 2
         var cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier)
         if cell == nil {
-            cell = UITableViewCell(style: UITableViewCell.CellStyle.value2, reuseIdentifier: cellReuseIdentifier)
+            cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: cellReuseIdentifier)
         }
         cell?.textLabel?.text = players[indexPath.row].playername
         cell?.detailTextLabel?.text = players[indexPath.row].playerdescription

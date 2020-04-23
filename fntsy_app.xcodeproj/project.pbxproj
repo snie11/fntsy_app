@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		61C634B61E97FD4DB2516068 /* Pods_fntsy_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62ACA1CAAE682B305E4A76A4 /* Pods_fntsy_app.framework */; };
+		6D0BA98E2451F72A00CD2C7C /* EditPointsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0BA98D2451F72A00CD2C7C /* EditPointsViewController.swift */; };
+		6D0BA9902451FF0600CD2C7C /* PlayerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0BA98F2451FF0600CD2C7C /* PlayerDetailViewController.swift */; };
 		6D3D37FD244FB9B700466E0D /* FirebaseAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3D37FC244FB9B700466E0D /* FirebaseAuthManager.swift */; };
 		6D3D37FF244FF71300466E0D /* FirebaseDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3D37FE244FF71300466E0D /* FirebaseDataManager.swift */; };
 		6D3D38012450BB9A00466E0D /* NewLeagueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3D38002450BB9A00466E0D /* NewLeagueViewController.swift */; };
@@ -64,6 +66,8 @@
 		2D63EF1147A1791243CE3343 /* Pods-fntsy_app-fntsy_appUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fntsy_app-fntsy_appUITests.release.xcconfig"; path = "Target Support Files/Pods-fntsy_app-fntsy_appUITests/Pods-fntsy_app-fntsy_appUITests.release.xcconfig"; sourceTree = "<group>"; };
 		32D9355E619752A37E7430B8 /* Pods_fntsy_appTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fntsy_appTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		62ACA1CAAE682B305E4A76A4 /* Pods_fntsy_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fntsy_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D0BA98D2451F72A00CD2C7C /* EditPointsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPointsViewController.swift; sourceTree = "<group>"; };
+		6D0BA98F2451FF0600CD2C7C /* PlayerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailViewController.swift; sourceTree = "<group>"; };
 		6D3D37FC244FB9B700466E0D /* FirebaseAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthManager.swift; sourceTree = "<group>"; };
 		6D3D37FE244FF71300466E0D /* FirebaseDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDataManager.swift; sourceTree = "<group>"; };
 		6D3D38002450BB9A00466E0D /* NewLeagueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLeagueViewController.swift; sourceTree = "<group>"; };
@@ -179,6 +183,8 @@
 				6D98835D24513DC400D56517 /* InviteFriendsViewController.swift */,
 				6D98835F2451574000D56517 /* JoinLeagueViewController.swift */,
 				6D98836124516F1800D56517 /* LeagueDashboardViewController.swift */,
+				6D0BA98D2451F72A00CD2C7C /* EditPointsViewController.swift */,
+				6D0BA98F2451FF0600CD2C7C /* PlayerDetailViewController.swift */,
 				6DBFB33F244418DB006C4309 /* Main.storyboard */,
 				6DBFB342244418DE006C4309 /* Assets.xcassets */,
 				6DBFB37D244420DA006C4309 /* fonts */,
@@ -492,6 +498,8 @@
 				6D3D37FD244FB9B700466E0D /* FirebaseAuthManager.swift in Sources */,
 				6D3D37FF244FF71300466E0D /* FirebaseDataManager.swift in Sources */,
 				6D3D38012450BB9A00466E0D /* NewLeagueViewController.swift in Sources */,
+				6D0BA98E2451F72A00CD2C7C /* EditPointsViewController.swift in Sources */,
+				6D0BA9902451FF0600CD2C7C /* PlayerDetailViewController.swift in Sources */,
 				6D904AF124481397001E6BC0 /* DashboardViewController.swift in Sources */,
 				6DBFB33E244418DB006C4309 /* ViewController.swift in Sources */,
 				6D904AEF24480FB3001E6BC0 /* SignupViewController.swift in Sources */,
