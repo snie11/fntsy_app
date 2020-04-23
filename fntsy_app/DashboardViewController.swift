@@ -28,6 +28,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     var ref: DatabaseReference!
     var refHandle: DatabaseHandle!
     var handle : AuthStateDidChangeListenerHandle?
+    var leagues : [League] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +39,6 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
 //        let queue = DispatchQueue(label: "loadUsers")
         
         self.ref = Database.database().reference()
-        refreshLeagues(refreshControl)
 //        self.refreshControl.addTarget(self, action: #selector(self.refreshLeagues(_:)), for: .valueChanged)
         
         DispatchQueue.main.async{
@@ -55,21 +55,19 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
 //        signupButton?.setImage(UIImage(named:"signin_button"), for: .normal)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-            print("user:")
-            dump(user!);
-//          self.tableView.reloadData()
-        }
+//    override func viewWillAppear(_ animated: Bool) {
+//        refreshLeagues(refreshControl)
+//    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        resultleagues = []
+        refreshLeagues(refreshControl)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-    }
-    
-    @IBAction func refresh(_ sender: UIRefreshControl) {
-        sender.beginRefreshing()
-        refreshLeagues(sender)
-    }
+//    @IBAction func refresh(_ sender: UIRefreshControl) {
+//        sender.beginRefreshing()
+//        refreshLeagues(sender)
+//    }
     
     func setupTableView() {
         if #available(iOS 10.0, *) {
@@ -85,6 +83,9 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             let detailVC = destinationVC as! NewLeagueViewController
             detailVC.email = email
             print("DashboardtoCreateLeague with email \(email)")
+        } else if segue.identifier == "DashboardtoJoinLeague" {
+            let detailVC = destinationVC as! JoinLeagueViewController
+            detailVC.email = email
         }
         
         
@@ -136,7 +137,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
                         for user in users {
                             if let em = user["email"] as? String {
                                 if (em == self.email) {
-                                    if let leagueCode = league["leaguename"] as? String {
+                                    if let leagueCode = league["leaguename"] as? String, let leagueName = league["leaguecode"] {
                                         print(leagueCode)
                                         self.resultleagues.append(leagueCode)
                                     }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PDk-a4-hTW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Egr-xh-VX2">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -143,7 +143,7 @@
             <objects>
                 <viewController id="sCx-jN-k2R" customClass="DashboardViewController" customModule="fntsy_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MKr-Af-tRZ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ix4-fI-AJs">
@@ -207,14 +207,20 @@
                                 <rect key="frame" x="354" y="203" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="PDk-a4-hTW" kind="show" identifier="DashboardtoCreateLeague" id="3hv-vy-V75"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="12L-0h-eYl">
                                 <rect key="frame" x="292" y="203" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="gDJ-3J-ebH" kind="show" identifier="DashboardtoJoinLeague" id="Ub7-qR-Sn9"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDq-Mz-Ofc">
-                                <rect key="frame" x="48" y="111" width="300" height="125"/>
+                                <rect key="frame" x="48" y="111" width="298" height="111"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Welcome back,">
@@ -249,12 +255,93 @@
             </objects>
             <point key="canvasLocation" x="2933.3333333333335" y="139.95535714285714"/>
         </scene>
+        <!--Join League View Controller-->
+        <scene sceneID="O3U-hA-6q8">
+            <objects>
+                <viewController id="gDJ-3J-ebH" customClass="JoinLeagueViewController" customModule="fntsy_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zn5-ah-FwR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q3U-B9-w1M">
+                                <rect key="frame" x="-30" y="-10" width="470" height="260"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="470" id="Rg5-Yo-XwE"/>
+                                    <constraint firstAttribute="height" constant="260" id="bCM-L9-2pV"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sXg-Ym-gVA">
+                                <rect key="frame" x="18" y="185" width="375" height="174"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nVt-Wz-wp3">
+                                <rect key="frame" x="57" y="229" width="110" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="League name">
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="18" name="Catamaran-Medium"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rnv-dx-t2M">
+                                <rect key="frame" x="57" y="258" width="300" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="okq-6V-oVe">
+                                <rect key="frame" x="32" y="124" width="313" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Join league with code">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="32" name="Catamaran-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Y5-sZ-4h5">
+                                <rect key="frame" x="46" y="727" width="319" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="onClickWith_sender:" destination="gDJ-3J-ebH" eventType="touchUpInside" id="oOP-Rc-lqc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Q3U-B9-w1M" firstAttribute="top" secondItem="zn5-ah-FwR" secondAttribute="top" constant="-10" id="1iC-9F-zzk"/>
+                            <constraint firstItem="Q3U-B9-w1M" firstAttribute="leading" secondItem="zn5-ah-FwR" secondAttribute="leading" constant="-30" id="d70-Ag-CyL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="uR8-r0-Lgv"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ajg-2K-ute"/>
+                    <connections>
+                        <outlet property="backsplash" destination="Q3U-B9-w1M" id="1ug-gA-xIP"/>
+                        <outlet property="card" destination="sXg-Ym-gVA" id="yhz-Cq-FAw"/>
+                        <outlet property="createGroupButton" destination="6Y5-sZ-4h5" id="Pek-9k-1OP"/>
+                        <outlet property="leagueCode" destination="Rnv-dx-t2M" id="0nC-7w-H0C"/>
+                        <segue destination="sCx-jN-k2R" kind="show" identifier="JoinToDashboard" id="JcD-sc-AbV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="loS-3F-8rz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3752" y="755"/>
+        </scene>
         <!--New League View Controller-->
         <scene sceneID="jX8-s0-p3s">
             <objects>
                 <viewController id="PDk-a4-hTW" customClass="NewLeagueViewController" customModule="fntsy_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UBE-Cm-k9o">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xGj-gl-u2D">
@@ -352,7 +439,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="28C-WB-TRx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3792.753623188406" y="-520.3125"/>
+            <point key="canvasLocation" x="3222" y="-567"/>
         </scene>
         <!--Assemble Lineup View Controller-->
         <scene sceneID="Pee-cv-Gl2">
@@ -432,6 +519,9 @@
                                 <rect key="frame" x="48" y="731" width="319" height="68"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="VcK-qa-3TB" kind="show" identifier="AssembletoInvite" id="Azn-83-e6L"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -452,7 +542,101 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L4M-YI-ZfO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4569.5652173913049" y="-526.33928571428567"/>
+            <point key="canvasLocation" x="3977" y="-567"/>
+        </scene>
+        <!--Invite Friends View Controller-->
+        <scene sceneID="h6I-iC-oSG">
+            <objects>
+                <viewController id="VcK-qa-3TB" customClass="InviteFriendsViewController" customModule="fntsy_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="H0Q-3P-f1L">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U0E-D8-N2h">
+                                <rect key="frame" x="-30" y="-10" width="470" height="260"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="470" id="jEp-UK-2Dd"/>
+                                    <constraint firstAttribute="height" constant="260" id="ocx-JU-NLF"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3bm-1G-xYf">
+                                <rect key="frame" x="59" y="126" width="292" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Invite friends">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="32" name="Catamaran-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OXL-DT-YVB">
+                                <rect key="frame" x="20" y="200" width="375" height="174"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gjm-GT-wUg">
+                                <rect key="frame" x="39" y="241" width="333" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Use the following code to join the league:">
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="14" name="Catamaran-Medium"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uTQ-BX-x2I">
+                                <rect key="frame" x="53" y="782" width="319" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K88-PG-BZM">
+                                <rect key="frame" x="53" y="724" width="319" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="onClickWith_sender:" destination="VcK-qa-3TB" eventType="touchUpInside" id="RVa-Ex-aYw"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Re4-ei-SqT">
+                                <rect key="frame" x="102" y="271" width="207" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="0439">
+                                        <attributes>
+                                            <font key="NSFont" size="48" name="Catamaran-SemiBold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="U0E-D8-N2h" firstAttribute="top" secondItem="H0Q-3P-f1L" secondAttribute="top" constant="-10" id="9xr-CK-BBx"/>
+                            <constraint firstItem="U0E-D8-N2h" firstAttribute="leading" secondItem="H0Q-3P-f1L" secondAttribute="leading" constant="-30" id="LeM-rg-LgH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="TUm-60-KGb"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="kUp-cd-iQT"/>
+                    <connections>
+                        <outlet property="backsplash" destination="U0E-D8-N2h" id="L3M-Cm-0Dw"/>
+                        <outlet property="card" destination="OXL-DT-YVB" id="6ul-mb-sWc"/>
+                        <outlet property="createGroupButton" destination="K88-PG-BZM" id="fJu-6N-Ih2"/>
+                        <outlet property="groupcode" destination="Re4-ei-SqT" id="kcz-1W-wNJ"/>
+                        <segue destination="sCx-jN-k2R" kind="show" identifier="InviteToDashboard" id="Ykz-4D-3t0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="slm-cz-P9z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4698.5507246376819" y="-567.1875"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bO0-fz-PGQ">
@@ -554,6 +738,6 @@
         <image name="shield.fill" catalog="system" width="64" height="56"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="U5H-TO-lGM"/>
+        <segue reference="JcD-sc-AbV"/>
     </inferredMetricsTieBreakers>
 </document>

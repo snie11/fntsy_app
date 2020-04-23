@@ -15,6 +15,7 @@ struct League {
     var leaguename : String
     var leaguecode : String
     var players : [Player]
+    var users : [String]
 }
 
 struct Player {
@@ -47,7 +48,7 @@ class NewLeagueViewController: UIViewController {
             let detailVC = destinationVC as! AssembleLineupViewController
             detailVC.email = email
             detailVC.leaguename = leaguename!.text!
-            detailVC.leaguename = leaguecode!.text!
+            detailVC.leaguecode = leaguecode!.text!
             print("toAssemble with \(email), \(leaguename!.text!), \(leaguecode!.text!)")
         }
     }
