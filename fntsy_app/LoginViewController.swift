@@ -18,6 +18,7 @@ class LoginViewController: UIViewController {
     @IBOutlet var emailTextField : UITextField?
     @IBOutlet var passwordTextField : UITextField?
     var username : String = ""
+    var passText: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,9 @@ class LoginViewController: UIViewController {
         emailTextField!.text = "selina.nie11@gmail.com"
         passwordTextField!.text = "hello123"
         loginButton?.setImage(UIImage(named:"login_button"), for: .normal)
+        emailTextField?.autocorrectionType = .no
+        passwordTextField?.autocorrectionType = .no
+        passwordTextField?.isSecureTextEntry = true
     }
     
     @IBAction func loginUser() {

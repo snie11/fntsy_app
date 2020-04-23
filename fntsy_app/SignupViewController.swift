@@ -41,6 +41,7 @@ class SignupViewController: UIViewController {
         nameTextField?.autocorrectionType = .no
         emailTextField?.autocorrectionType = .no
         passwordTextField?.autocorrectionType = .no
+        passwordTextField?.isSecureTextEntry = true
 //        delegate = FirebaseDataManager()
 //        let dispatchQueue = DispatchQueue(label: "loadUsers", qos: .background)
 //        dispatchQueue.async{
@@ -91,14 +92,14 @@ class SignupViewController: UIViewController {
 //        }
     }
     
-//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-//        passText = ((passText ?? "") as NSString).replacingCharacters(in: range, with: text)
-//        return true
-//    }
-//
-//    func textViewDidChange(_ textView: UITextView) {
-//        passwordTextField?.text = String(repeating: "*", count: (passwordTextField?.text ?? "").count)
-//    }
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        passText = ((passText ?? "") as NSString).replacingCharacters(in: range, with: text)
+        return true
+    }
+
+    func textViewDidChange(_ textView: UITextView) {
+        passwordTextField?.text = String(repeating: "●", count: (passwordTextField?.text ?? "").count)
+    }
 //
     
     

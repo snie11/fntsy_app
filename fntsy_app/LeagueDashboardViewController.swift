@@ -23,7 +23,7 @@ import FirebaseAuth
 //    var points : [Int]
 //}
 
-class LeagueDashboardViewController: UIViewController {
+class LeagueDashboardViewController: UIViewController, PointRefresher {
     
     var ref: DatabaseReference!
     var refHandle: DatabaseHandle!
@@ -56,6 +56,7 @@ class LeagueDashboardViewController: UIViewController {
             self.card1?.image = UIImage(named: "white_card")
             self.card2?.image = UIImage(named: "white_card2")
             self.editButton?.setImage(UIImage(named:"edit_add"), for: .normal)
+            self.view.backgroundColor = UIColor.init(named: "grey")
         }
         ref = Database.database().reference()
         var scoreMap : [String : Int] = [:]
@@ -94,6 +95,10 @@ class LeagueDashboardViewController: UIViewController {
         }
     }
     
+    func refreshPoints() {
+        getLeague()
+    }
+    
     @IBAction func onClick(_sender : UIButton) {
 //        self.performSegue(withIdentifier: "InviteToDashboard", sender: nil)
     }
@@ -105,6 +110,7 @@ class LeagueDashboardViewController: UIViewController {
             let detailVC = destinationVC as! EditPointsViewController
             detailVC.league = league
             detailVC.leagueid = id
+            detailVC.delegate = self
 //            detailVC.leaguename = leaguecode!.text!
             print("to points")
         }

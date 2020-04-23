@@ -9,6 +9,10 @@
 import UIKit
 import Firebase
 
+protocol PointRefresher: class {
+    func refreshPoints()
+}
+
 class PlayerDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
     var leagueid : Int?
@@ -27,6 +31,8 @@ class PlayerDetailViewController: UIViewController, UITableViewDelegate, UITable
     
     var ref: DatabaseReference!
     var refHandle: DatabaseHandle!
+    
+    weak var delegate: PointRefresher?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,9 +65,13 @@ class PlayerDetailViewController: UIViewController, UITableViewDelegate, UITable
                 self.ref.child("leagues").child("\(self.leagueid!)").child("players").child("\(self.playerid!)").child("totalpts").setValue(self.currPlayer!.totalpoints)
                 
                 self.tableView.reloadData()
+                self.delegate?.refreshPoints()
             }
         }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil )
         alertController.addAction(submitAction)
+        alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
     }
     
