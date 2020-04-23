@@ -38,6 +38,9 @@ class SignupViewController: UIViewController {
         super.viewDidLoad()
         bg?.image = UIImage(named: "bg2")
         loginButton?.setImage(UIImage(named:"signin_button"), for: .normal)
+        nameTextField?.autocorrectionType = .no
+        emailTextField?.autocorrectionType = .no
+        passwordTextField?.autocorrectionType = .no
 //        delegate = FirebaseDataManager()
 //        let dispatchQueue = DispatchQueue(label: "loadUsers", qos: .background)
 //        dispatchQueue.async{
@@ -49,14 +52,7 @@ class SignupViewController: UIViewController {
     @IBAction func createNewUser() {
         let signUpManager = FirebaseAuthManager()
         if let username = nameTextField?.text {
-            print(username)
-            dump(usernames)
-            if (usernames.contains(username)) {
-                let alertController = UIAlertController(title: nil, message: "Username already exists.", preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                self.present(alertController, animated: true, completion: nil)
-            } else {
-                if let email = emailTextField?.text, let password = passwordTextField?.text {
+            if let email = emailTextField?.text, let password = passwordTextField?.text {
                     signUpManager.createUser(email: email, password: password) {[weak self] (success) in
                         guard let `self` = self else { return }
                         var message: String = ""
@@ -76,7 +72,6 @@ class SignupViewController: UIViewController {
                         self.present(alertController, animated: true, completion: nil)
                     }
                 }
-            }
         }
     }
     

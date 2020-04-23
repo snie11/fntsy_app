@@ -41,7 +41,22 @@ class NewLeagueViewController: UIViewController {
         bg?.image = UIImage(named: "upper_splash")
         card1?.image = UIImage(named: "white_card")
         card2?.image = UIImage(named: "white_card")
+        leaguename?.text = ""
+        leaguecode?.text = ""
         continueButton?.setImage(UIImage(named:"ContLineup"), for: .normal)
+    }
+    
+    @IBAction func onClick(_sender : UIButton) {
+        if (leaguename!.text! == "" || leaguecode!.text! == "") {
+            let message = "Enter both fields."
+            let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+            let submitAction = UIAlertAction(title: "OK", style: .default) { [unowned alertController] _ in
+            }
+            alertController.addAction(submitAction)
+            self.present(alertController, animated: true, completion: nil)
+        } else {
+            performSegue(withIdentifier: "CreateLeaguetoAssemble", sender: nil)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

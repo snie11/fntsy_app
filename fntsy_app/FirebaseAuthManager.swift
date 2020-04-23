@@ -29,6 +29,7 @@ class FirebaseAuthManager {
                 print(user)
                 completionBlock(true)
             } else {
+                print(error!)
                 completionBlock(false)
             }
         }

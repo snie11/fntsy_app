@@ -58,6 +58,7 @@ class LeagueDashboardViewController: UIViewController {
             self.editButton?.setImage(UIImage(named:"edit_add"), for: .normal)
         }
         ref = Database.database().reference()
+        var scoreMap : [String : Int] = [:]
         getLeague()
     }
     
@@ -113,7 +114,6 @@ class LeagueDashboardViewController: UIViewController {
         refHandle = ref.child("leagues/\(id)").observe(DataEventType.value, with: { (snapshot) in
             if let l = snapshot.value as? NSDictionary {
                 print("got here 1")
-                dump(l)
                 if let leaguenm = l["leaguename"] as? String, let leaguecode = l["leaguecode"] as? String, let ps = l["players"] as? [NSDictionary], let us = l["users"] as? [NSDictionary] {
                     print("got here 2")
                     var players : [Player] = []

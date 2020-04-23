@@ -40,7 +40,7 @@ class AssembleLineupViewController: UIViewController, UITableViewDelegate, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
+//        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
         backsplash?.image = UIImage(named: "upper_splash")

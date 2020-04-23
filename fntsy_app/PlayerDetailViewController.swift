@@ -83,7 +83,6 @@ class PlayerDetailViewController: UIViewController, UITableViewDelegate, UITable
                 }
             })
         }
-        _ = navigationController?.popViewController(animated: true)
     }
 
     func createPickerView() {
@@ -96,7 +95,7 @@ class PlayerDetailViewController: UIViewController, UITableViewDelegate, UITable
        let toolBar = UIToolbar()
        toolBar.sizeToFit()
         let button = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.action))
-       toolBar.setItems([button], animated: true)
+       toolBar.setItems([button], animated: false)
        toolBar.isUserInteractionEnabled = true
        team?.inputAccessoryView = toolBar
     }

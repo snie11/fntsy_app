@@ -34,14 +34,14 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
+//        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
     
 //        let queue = DispatchQueue(label: "loadUsers")
         
-        self.ref = Database.database().reference()
-//        self.refreshControl.addTarget(self, action: #selector(self.refreshLeagues(_:)), for: .valueChanged)
+//        self.ref = Database.database().reference()
+        // self.refreshControl.addTarget(self, action: #selector(self.refreshLeagues(_:)), for: .valueChanged)
         
         DispatchQueue.main.async{
             self.welcomeName?.text = "Welcome back!"
@@ -53,8 +53,6 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             print("email \(self.email)")
         }
         
-//        loginButton?.setImage(UIImage(named:"login_button"), for: .normal)
-//        signupButton?.setImage(UIImage(named:"signin_button"), for: .normal)
     }
     
 //    override func viewWillAppear(_ animated: Bool) {
@@ -139,7 +137,8 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     
     private func getLeagues(_ sender: UIRefreshControl) {
 //        self.resultleagues = ["Survivor Family League", "OT Fantasy League"]
-        
+        self.ref = Database.database().reference()
+        print("got to getleagues")
         self.refHandle = self.ref.child("leagues").observe(DataEventType.value, with: { (snapshot) in
             if let leagues = snapshot.value as? [NSDictionary] {
                 print("got leagues snapshoot")
@@ -166,6 +165,8 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
                     self.tableView.reloadData()
                     sender.endRefreshing()
                 }
+            } else {
+                dump(snapshot.value)
             }
         })
     }

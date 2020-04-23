@@ -42,6 +42,10 @@ class EditPointsViewController: UIViewController, UITableViewDelegate, UITableVi
         backsplash?.image = UIImage(named: "upper_splash")
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
     func setupTableView() {
         if #available(iOS 10.0, *) {
             tableView!.refreshControl = refreshControl
