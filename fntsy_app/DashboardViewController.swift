@@ -29,6 +29,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     var refHandle: DatabaseHandle!
     var handle : AuthStateDidChangeListenerHandle?
     var leagues : [League] = []
+    var map : [Int: String] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +61,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
 //    }
     
     override func viewDidAppear(_ animated: Bool) {
+        print("got to dashboard with \(email)")
         resultleagues = []
         refreshLeagues(refreshControl)
     }
@@ -131,15 +133,17 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         self.refHandle = self.ref.child("leagues").observe(DataEventType.value, with: { (snapshot) in
             if let leagues = snapshot.value as? [NSDictionary] {
                 print("got leagues snapshoot")
-                for league in leagues {
+                for i in 0...leagues.count-1 {
+                    var league = leagues[i]
                     if let users = league["users"] as? [NSDictionary] {
                         print("got users")
                         for user in users {
                             if let em = user["email"] as? String {
                                 if (em == self.email) {
                                     if let leagueCode = league["leaguename"] as? String, let leagueName = league["leaguecode"] {
-                                        print(leagueCode)
+                                        print("\(i) as \(leagueCode)")
                                         self.resultleagues.append(leagueCode)
+                                        self.map[i] = leagueCode
                                     }
                                 }
                             }

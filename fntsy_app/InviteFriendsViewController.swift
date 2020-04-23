@@ -35,6 +35,7 @@ class InviteFriendsViewController: UIViewController {
     
     var league : League?
     var id : Int = 100
+    var email : String = ""
     
     override func viewDidLoad() {
     
@@ -73,11 +74,10 @@ class InviteFriendsViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination as UIViewController
-        if segue.identifier == "InvitetoDashboard" {
+        if segue.identifier == "InviteToDashboard" {
             // send whole league object
-            
-//            let detailVC = destinationVC as! AssembleLineupViewController
-//            detailVC.email = email
+            let detailVC = destinationVC as! DashboardViewController
+            detailVC.email = email
 //            detailVC.leaguename = leaguename!.text!
 //            detailVC.leaguename = leaguecode!.text!
             print("toDashboard with new league")

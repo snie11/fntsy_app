@@ -124,6 +124,7 @@ class AssembleLineupViewController: UIViewController, UITableViewDelegate, UITab
             
             let detailVC = destinationVC as! InviteFriendsViewController
             detailVC.league = league
+            detailVC.email = email
 //            detailVC.leaguename = leaguecode!.text!
             print("toInvite with \(email), \(leaguecode), \([players])")
         }
