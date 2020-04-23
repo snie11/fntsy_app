@@ -21,6 +21,8 @@ struct League {
 struct Player {
     var playername : String
     var playerdescription : String
+    var playerteam : String
+    var totalpoints : Int
     var points : [Int]
 }
 

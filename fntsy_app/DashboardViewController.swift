@@ -29,7 +29,8 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     var refHandle: DatabaseHandle!
     var handle : AuthStateDidChangeListenerHandle?
     var leagues : [League] = []
-    var map : [Int: String] = [:]
+    var map : [Int: Int] = [:]
+    var currentLeague : Int = 100
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,6 +89,9 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         } else if segue.identifier == "DashboardtoJoinLeague" {
             let detailVC = destinationVC as! JoinLeagueViewController
             detailVC.email = email
+        } else if segue.identifier == "DashboardtoLeagueDash" {
+            let detailVC = destinationVC as! LeagueDashboardViewController
+            detailVC.id = currentLeague
         }
         
         
@@ -122,6 +126,12 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.deselectRow(at: indexPath, animated: true)
+        currentLeague = map[indexPath.row]!
+        self.performSegue(withIdentifier: "DashboardtoLeagueDash", sender: nil)
+    }
+    
     private func refreshLeagues(_ sender: UIRefreshControl) {
         sender.beginRefreshing()
         getLeagues(sender)
@@ -141,9 +151,10 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
                             if let em = user["email"] as? String {
                                 if (em == self.email) {
                                     if let leagueCode = league["leaguename"] as? String, let leagueName = league["leaguecode"] {
+                                        print("mapping \(self.resultleagues.count) as \(i)")
+                                        self.map[self.resultleagues.count] = i
                                         print("\(i) as \(leagueCode)")
                                         self.resultleagues.append(leagueCode)
-                                        self.map[i] = leagueCode
                                     }
                                 }
                             }

@@ -57,7 +57,7 @@ class AssembleLineupViewController: UIViewController, UITableViewDelegate, UITab
             let name = alertController.textFields![0].text
             let description = alertController.textFields![1].text
             
-            let player = Player(playername: name!, playerdescription: description!, points: [])
+            let player = Player(playername: name!, playerdescription: description!, playerteam: "", totalpoints: 0, points: [])
             dump(player)
             self.players.append(player)
             self.tableView.reloadData()

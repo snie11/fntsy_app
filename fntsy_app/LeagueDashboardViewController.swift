@@ -32,7 +32,8 @@ class LeagueDashboardViewController: UIViewController {
     @IBOutlet var card1 : UIImageView?
     @IBOutlet var card2 : UIImageView?
     @IBOutlet var editButton : UIButton?
-    @IBOutlet var rankings : UILabel?
+    @IBOutlet var rankings : UITextView?
+    @IBOutlet var rankingsnums : UITextView?
     @IBOutlet var topPlayer : UILabel?
     @IBOutlet var topPlayerTeam : UILabel?
     @IBOutlet var welcome : UILabel?
@@ -40,6 +41,11 @@ class LeagueDashboardViewController: UIViewController {
     var leaguename : String = ""
     var league : League?
     var id : Int = 0
+    var topScore : Int = 0
+    var topScorePlayer : String = "Loading ..."
+    var topScoreTeam : String = "Loading ..."
+    
+    var scoreMap : [String : Int] = [:]
     
     override func viewDidLoad() {
     
@@ -48,11 +54,39 @@ class LeagueDashboardViewController: UIViewController {
             self.backsplash?.image = UIImage(named: "upper_splash")
             self.welcome?.text = self.leaguename;
             self.card1?.image = UIImage(named: "white_card")
-            self.card2?.image = UIImage(named: "white_card")
-            self.editButton?.setImage(UIImage(named:"edit_button"), for: .normal)
+            self.card2?.image = UIImage(named: "white_card2")
+            self.editButton?.setImage(UIImage(named:"edit_add"), for: .normal)
         }
         ref = Database.database().reference()
         getLeague()
+    }
+    
+    private func updateFields() {
+        
+        DispatchQueue.main.async{
+            self.welcome?.text = self.league?.leaguename;
+            self.topPlayer?.text = self.topScorePlayer
+            self.topPlayerTeam?.text = self.topScoreTeam
+            
+            var scoreField : String = ""
+            var scoreNumField : String = ""
+            
+            let sorted = self.scoreMap.sorted { $0.1 > $1.1 }
+            
+            var i : Int = 5
+            for (player, score) in sorted {
+                if (i > 0) {
+                    scoreField += "\(player)\n"
+                    scoreNumField += "\(score)\n"
+                    i -= 1
+                }
+            }
+            
+            dump(self.scoreMap)
+            
+            self.rankings?.text = scoreField
+            self.rankingsnums?.text = scoreNumField
+        }
     }
     
     @IBAction func onClick(_sender : UIButton) {
@@ -76,18 +110,44 @@ class LeagueDashboardViewController: UIViewController {
             if let l = snapshot.value as? NSDictionary {
                 print("got here 1")
 //                dump(l)
-                if let leaguecode = l["leaguecode"] as? Int, let ps = l["players"] as? [NSDictionary], let us = l["users"] as? [NSDictionary] {
+                if let leaguenm = l["leaguename"] as? String, let leaguecode = l["leaguecode"] as? Int, let ps = l["players"] as? [NSDictionary], let us = l["users"] as? [NSDictionary] {
                     print("got here 2")
                     var players : [Player] = []
                     var users : [String] = []
                     
                     for p in ps {
-                        if let pname = p["name"] as? String, let pteam = p["team"] as? String, let ppts = p["pts"] as? NSArray, let ptotalpts = p["totalpts"] as? Int {
+                        if let pname = p["name"] as? String, let pteam = p["team"] as? String, let pdescription = p["description"] as? String, let ppts = p["pts"] as? NSArray, let ptotalpts = p["totalpts"] as? Int {
                             print("got here miraculously")
-//                            var points : [Int] = []
-
+                            var points : [Int] = []
+                            for pt in ppts {
+                                points.append(pt as! Int)
+                            }
+                            
+                            if ptotalpts > self.topScore {
+                                self.topScore = ptotalpts
+                                self.topScorePlayer = pname
+                                self.topScoreTeam = pteam
+                            }
+                            
+                            if let curr = self.scoreMap[pteam] as? Int {
+                                self.scoreMap[pteam]! += ptotalpts
+                            } else {
+                                self.scoreMap[pteam] = ptotalpts
+                            }
+                                
+                            let player1 = Player(playername: pname, playerdescription: pdescription, playerteam: pteam, totalpoints: ptotalpts, points: points)
+                            players.append(player1)
                         }
                     }
+                    
+                    for u in us {
+                        if let uemail = u["email"] as? String {
+                            users.append(uemail)
+                        }
+                    }
+                    
+                    self.league = League(leaguename: leaguenm, leaguecode: "\(leaguecode)", players: players, users: users)
+                    self.updateFields()
                 }
             }
         })
