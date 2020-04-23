@@ -79,6 +79,23 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as UIViewController
+        if segue.identifier == "DashboardtoCreateLeague" {
+            let detailVC = destinationVC as! NewLeagueViewController
+            detailVC.email = email
+            print("DashboardtoCreateLeague with email \(email)")
+        }
+        
+        
+//        else if segue.identifier == "toACVC" {
+//            print("toDashboard")
+//            let navVC = destinationVC as! UINavigationController
+//            let addContactVC = navVC.topViewController as! AddContactViewController
+//            addContactVC.delegate = self
+//        }
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

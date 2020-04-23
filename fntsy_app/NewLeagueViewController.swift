@@ -31,8 +31,8 @@ class NewLeagueViewController: UIViewController {
     @IBOutlet var continueButton : UIButton?
     @IBOutlet var leaguename : UITextField?
     @IBOutlet var leaguecode : UITextField?
-    var username : String = ""
-
+    var email : String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         bg?.image = UIImage(named: "upper_splash")
@@ -42,18 +42,13 @@ class NewLeagueViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let destinationVC = segue.destination as UIViewController
-//        if segue.identifier == "loginToDashboard" {
-//            let detailVC = destinationVC as! DashboardViewController
-//            detailVC.email = emailTextField!.text!
-//            print("toDashboard with email \(emailTextField!.text)")
+        let destinationVC = segue.destination as UIViewController
+        if segue.identifier == "CreateLeaguetoAssemble" {
+            let detailVC = destinationVC as! AssembleLineupViewController
+            detailVC.email = email
+            detailVC.leaguename = leaguename!.text!
+            detailVC.leaguename = leaguecode!.text!
+            print("toAssemble with \(email), \(leaguename!.text!), \(leaguecode!.text!)")
+        }
     }
-        
-        
-//        else if segue.identifier == "toACVC" {
-//            print("toDashboard")
-//            let navVC = destinationVC as! UINavigationController
-//            let addContactVC = navVC.topViewController as! AddContactViewController
-//            addContactVC.delegate = self
-//        }
 }

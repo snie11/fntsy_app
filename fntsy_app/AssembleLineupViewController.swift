@@ -11,6 +11,18 @@ import Foundation
 import Firebase
 import FirebaseAuth
 
+//struct League {
+//    var leaguename : String
+//    var leaguecode : String
+//    var players : [Player]
+//}
+//
+//struct Player {
+//    var playername : String
+//    var playerdescription : String
+//    var points : [Int]
+//}
+
 class AssembleLineupViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var newPlayerButton : UIButton?
@@ -19,9 +31,12 @@ class AssembleLineupViewController: UIViewController, UITableViewDelegate, UITab
     var resultleagues : [String] = []
     @IBOutlet var backsplash : UIImageView?
     private let refreshControl = UIRefreshControl()
+    @IBOutlet var inviteFriendsButton : UIButton?
+    private var players : [Player] = []
     
-    var selectedleague : String = ""
     var email : String = ""
+    var leaguename : String = ""
+    var leaguecode : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,17 +45,25 @@ class AssembleLineupViewController: UIViewController, UITableViewDelegate, UITab
         tableView.dataSource = self
         backsplash?.image = UIImage(named: "upper_splash")
         newPlayerButton?.setImage(UIImage(named:"􀁍"), for: .normal)
+        inviteFriendsButton?.setImage(UIImage(named:"invite_friends"), for: .normal)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-//        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-//            print("user:")
-//            dump(user!);
-////          self.tableView.reloadData()
-//        }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
+    @IBAction func onClick(_sender : UIButton) {
+        let message = "Enter player name and description."
+        let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alertController.addTextField(configurationHandler: nil)
+        alertController.addTextField(configurationHandler: nil)
+        let submitAction = UIAlertAction(title: "Submit", style: .default) { [unowned alertController] _ in
+            let name = alertController.textFields![0].text
+            let description = alertController.textFields![1].text
+            
+            let player = Player(playername: name!, playerdescription: description!, points: [])
+            dump(player)
+            self.players.append(player)
+            self.tableView.reloadData()
+        }
+        alertController.addAction(submitAction)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     func setupTableView() {
@@ -56,19 +79,25 @@ class AssembleLineupViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60.0
+        return 70.0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // 1
-        return resultleagues.count
+        return players.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // 2
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
-        cell.textLabel?.text = resultleagues[indexPath.row]
-        return cell
+        var cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier)
+        if cell == nil {
+            cell = UITableViewCell(style: UITableViewCell.CellStyle.value2, reuseIdentifier: cellReuseIdentifier)
+        }
+        cell?.textLabel?.text = players[indexPath.row].playername
+        cell?.detailTextLabel?.text = players[indexPath.row].playerdescription
+        cell?.imageView?.image = UIImage(systemName: "person")
+        cell?.imageView?.tintColor = UIColor.init(named: "green")
+        return cell!
     }
     
     private func refreshPlayers(_ sender: UIRefreshControl) {
@@ -77,6 +106,26 @@ class AssembleLineupViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     private func getPlayers(_ sender: UIRefreshControl) {
-
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+            sender.endRefreshing()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as UIViewController
+        if segue.identifier == "AssembletoInvite" {
+            // send whole league object
+            
+//            let detailVC = destinationVC as! AssembleLineupViewController
+//            detailVC.email = email
+//            detailVC.leaguename = leaguename!.text!
+//            detailVC.leaguename = leaguecode!.text!
+//            print("toAssemble with \(email), \(leaguename!.text!), \(leaguecode!.text!)")
+        }
     }
 }
