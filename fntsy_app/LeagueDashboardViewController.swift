@@ -118,13 +118,17 @@ class LeagueDashboardViewController: UIViewController {
                     print("got here 2")
                     var players : [Player] = []
                     var users : [String] = []
+                    var scoreMap : [String : Int] = [:]
                     
                     for p in ps {
-                        if let pname = p["name"] as? String, let pteam = p["team"] as? String, let pdescription = p["description"] as? String, let ppts = p["pts"] as? NSArray, let ptotalpts = p["totalpts"] as? Int {
+                        if let pname = p["name"] as? String, let pteam = p["team"] as? String, let pdescription = p["description"] as? String, let ppts = p["pts"] as? [NSDictionary], let ptotalpts = p["totalpts"] as? Int {
                             print("got here miraculously")
                             var points : [Int] = []
                             for pt in ppts {
-                                points.append(pt as! Int)
+                                if let week = pt["pts"] as? Int {
+                                    print(week)
+                                    points.append(week as! Int)
+                                }
                             }
                             
                             if ptotalpts > self.topScore {

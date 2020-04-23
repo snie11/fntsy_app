@@ -36,7 +36,7 @@ class EditPointsViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
+//        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
         backsplash?.image = UIImage(named: "upper_splash")
@@ -76,10 +76,7 @@ class EditPointsViewController: UIViewController, UITableViewDelegate, UITableVi
         cell.textLabel?.text = league!.players[indexPath.row].playername
         cell.imageView?.image = UIImage(systemName: "person")
         cell.imageView?.tintColor = UIColor.init(named: "green")
-        if let label1 = cell.viewWithTag(9) as? UILabel {
-            print("making cell detail \(league!.players[indexPath.row].playername)")
-             label1.text = "\(league!.players[indexPath.row].totalpoints) points"
-        }
+        cell.detailTextLabel?.text = "\(league!.players[indexPath.row].totalpoints) points"
         cell.accessoryType = .disclosureIndicator
         return cell
     }
@@ -105,7 +102,7 @@ class EditPointsViewController: UIViewController, UITableViewDelegate, UITableVi
             detailVC.league = league
             detailVC.leagueid = leagueid
             detailVC.playerid = playerid
-            detailVC.currPlayer = currPlayer
+//            detailVC.currPlayer = currPlayer
 //            detailVC.leaguename = leaguecode!.text!
             print("toPlayer")
         }

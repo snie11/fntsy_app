@@ -40,6 +40,7 @@ class PlayerDetailViewController: UIViewController, UITableViewDelegate, UITable
         createPickerView()
         dismissPickerView()
         ref = Database.database().reference()
+        currPlayer = league!.players[playerid!]
     }
     
     @IBAction func onClick(_sender : UIButton) {
@@ -48,11 +49,15 @@ class PlayerDetailViewController: UIViewController, UITableViewDelegate, UITable
         alertController.addTextField(configurationHandler: nil)
         let submitAction = UIAlertAction(title: "Submit", style: .default) { [unowned alertController] _ in
             if let points : Int = Int(alertController.textFields![0].text!) {
-               print("leagueid: \(self.leagueid)")
-                print("playerid: \(self.playerid)")
-//                self.ref.child("leagues").child("\(self.leagueid)").child("players").child("\(self.playerid)").child("pts").setValue(["\(self.currPlayer?.points.count)":points])
+               print("leagueid: \(self.leagueid!)")
+                print("playerid: \(self.playerid!)")
+                print("pointsnum: \((self.currPlayer?.points)!.count)")
+                self.ref.child("leagues").child("\(self.leagueid!)").child("players").child("\(self.playerid!)").child("pts").child("\((self.currPlayer?.points)!.count)").setValue(["pts":points])
                 
                 self.currPlayer?.points.append(points)
+                self.currPlayer?.totalpoints += points
+                self.ref.child("leagues").child("\(self.leagueid!)").child("players").child("\(self.playerid!)").child("totalpts").setValue(self.currPlayer!.totalpoints)
+                
                 self.tableView.reloadData()
             }
         }
@@ -62,19 +67,23 @@ class PlayerDetailViewController: UIViewController, UITableViewDelegate, UITable
     
     @IBAction func saveChanges(_sender : UIButton) {
         var usrnm : String = ""
-        refHandle = ref.child("users").observe(DataEventType.value, with: { (snapshot) in
-            if let users = snapshot.value as? [NSDictionary] {
-                for user in users {
-                    if let email = user["email"] as? String, let username = user["username"] as? String {
-                        if (email == self.selectedTeam) {
-                            usrnm = username
+        if let test = self.selectedTeam as? String {
+            print(self.selectedTeam!)
+            refHandle = ref.child("users").observe(DataEventType.value, with: { (snapshot) in
+                if let users = snapshot.value as? [NSDictionary] {
+                    for user in users {
+                        if let email = user["email"] as? String, let username = user["username"] as? String {
+                            if (email == self.selectedTeam!) {
+                                usrnm = username
+                                print(usrnm)
+                                self.ref.child("leagues").child("\(self.leagueid!)").child("players").child("\(self.playerid!)").child("team").setValue(usrnm)
+                            }
                         }
                     }
                 }
-            }
-            self.ref.child("leagues").child("\(self.leagueid)").child("players").child("\(self.playerid)").setValue(["team":usrnm])
-        })
-
+            })
+        }
+        _ = navigationController?.popViewController(animated: true)
     }
 
     func createPickerView() {
@@ -160,11 +169,12 @@ class PlayerDetailViewController: UIViewController, UITableViewDelegate, UITable
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination as UIViewController
-        if segue.identifier == "PlayertoPoints" {
+        if segue.identifier == "PlayerToDetail" {
             // send whole league object
             
-//            let detailVC = destinationVC as! EditPointsViewController
-//            detailVC.league = league
+            let detailVC = destinationVC as! EditPointsViewController
+            detailVC.league = league
+            detailVC.leagueid = leagueid
 //            detailVC.leaguename = leaguecode!.text!
             print("back to points")
         }

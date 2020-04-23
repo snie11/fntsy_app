@@ -46,7 +46,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         DispatchQueue.main.async{
             self.welcomeName?.text = "Welcome back!"
             self.backsplash?.image = UIImage(named: "upper_splash")
-            self.bottomNav?.image = UIImage(named: "bottom_nav")
+//            self.bottomNav?.image = UIImage(named: "bottom_nav")
             self.welcomeName?.text = "Welcome back!"
             self.newLeagueButton?.setImage(UIImage(named:"􀁍"), for: .normal)
             self.joinLeagueButton?.setImage(UIImage(named:"􀜖"), for: .normal)
