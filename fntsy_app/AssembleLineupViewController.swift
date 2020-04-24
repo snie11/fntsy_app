@@ -35,6 +35,7 @@ class AssembleLineupViewController: UIViewController, UITableViewDelegate, UITab
     private var players : [Player] = []
     
     var email : String = ""
+    var username : String = ""
     var leaguename : String = ""
     var leaguecode : String = ""
     
@@ -117,7 +118,7 @@ class AssembleLineupViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let league = League(leaguename: leaguename, leaguecode: leaguecode, players: players, users: [email])
+        let league = League(leaguename: leaguename, leaguecode: leaguecode, players: players, users: [username])
         let destinationVC = segue.destination as UIViewController
         if segue.identifier == "AssembletoInvite" {
             // send whole league object
@@ -125,6 +126,7 @@ class AssembleLineupViewController: UIViewController, UITableViewDelegate, UITab
             let detailVC = destinationVC as! InviteFriendsViewController
             detailVC.league = league
             detailVC.email = email
+            detailVC.username = email
 //            detailVC.leaguename = leaguecode!.text!
             print("toInvite with \(email), \(leaguecode), \([players])")
         }

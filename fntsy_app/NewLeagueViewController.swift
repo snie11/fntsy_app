@@ -35,6 +35,7 @@ class NewLeagueViewController: UIViewController {
     @IBOutlet var leaguename : UITextField?
     @IBOutlet var leaguecode : UITextField?
     var email : String = ""
+    var username : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,6 +67,7 @@ class NewLeagueViewController: UIViewController {
             detailVC.email = email
             detailVC.leaguename = leaguename!.text!
             detailVC.leaguecode = leaguecode!.text!
+            detailVC.username = username
             print("toAssemble with \(email), \(leaguename!.text!), \(leaguecode!.text!)")
         }
     }

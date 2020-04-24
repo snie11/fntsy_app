@@ -44,7 +44,6 @@ class LeagueDashboardViewController: UIViewController, PointRefresher {
     var topScore : Int = 0
     var topScorePlayer : String = "No points yet."
     var topScoreTeam : String = "No team yet."
-    
     var scoreMap : [String : Int] = [:]
     
     override func viewDidLoad() {
@@ -59,7 +58,7 @@ class LeagueDashboardViewController: UIViewController, PointRefresher {
             self.view.backgroundColor = UIColor.init(named: "grey")
         }
         ref = Database.database().reference()
-        var scoreMap : [String : Int] = [:]
+        scoreMap.removeAll()
         getLeague()
     }
     
@@ -88,15 +87,17 @@ class LeagueDashboardViewController: UIViewController, PointRefresher {
                 scoreField = "No ranks, click below to add."
             }
             
-            dump(self.scoreMap)
+//            dump(self.scoreMap)
             
             self.rankings?.text = scoreField
             self.rankingsnums?.text = scoreNumField
         }
     }
     
-    func refreshPoints() {
-        getLeague()
+    func refreshPoints(league l : League) {
+        league = l
+        scoreMap.removeAll()
+//        getLeague()
     }
     
     @IBAction func onClick(_sender : UIButton) {
@@ -124,7 +125,7 @@ class LeagueDashboardViewController: UIViewController, PointRefresher {
                     print("got here 2")
                     var players : [Player] = []
                     var users : [String] = []
-                    var scoreMap : [String : Int] = [:]
+                    self.scoreMap.removeAll()
                     
                     for p in ps {
                         if let pname = p["name"] as? String, let pteam = p["team"] as? String, let pdescription = p["description"] as? String, let ppts = p["pts"] as? [NSDictionary], let ptotalpts = p["totalpts"] as? Int {
@@ -160,7 +161,7 @@ class LeagueDashboardViewController: UIViewController, PointRefresher {
                     }
                     
                     for u in us {
-                        if let uemail = u["email"] as? String {
+                        if let uemail = u["username"] as? String {
                             users.append(uemail)
                         }
                     }

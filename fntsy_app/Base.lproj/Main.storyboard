@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eNZ-AE-QV8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Egr-xh-VX2">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -490,7 +490,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZj-oc-xFJ">
-                                <rect key="frame" x="47" y="80" width="298" height="81"/>
+                                <rect key="frame" x="56" y="104" width="298" height="81"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Edit points / teams">
@@ -669,10 +669,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nVt-Wz-wp3">
-                                <rect key="frame" x="57" y="229" width="110" height="21"/>
+                                <rect key="frame" x="57" y="229" width="105" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
-                                    <fragment content="League name">
+                                    <fragment content="League code">
                                         <attributes>
                                             <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="18" name="Catamaran-Medium"/>
@@ -723,7 +723,7 @@
                         <outlet property="card" destination="sXg-Ym-gVA" id="yhz-Cq-FAw"/>
                         <outlet property="createGroupButton" destination="6Y5-sZ-4h5" id="Pek-9k-1OP"/>
                         <outlet property="leagueCode" destination="Rnv-dx-t2M" id="0nC-7w-H0C"/>
-                        <segue destination="sCx-jN-k2R" kind="showDetail" identifier="JoinToDashboard" id="eSF-ne-lFS"/>
+                        <segue destination="sCx-jN-k2R" kind="show" identifier="JoinToDashboard" id="eSF-ne-lFS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="loS-3F-8rz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

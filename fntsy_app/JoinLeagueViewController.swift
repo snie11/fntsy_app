@@ -34,6 +34,7 @@ class JoinLeagueViewController: UIViewController {
     @IBOutlet var leagueCode : UITextField?
     
     var email : String = ""
+    var username : String = ""
     
     override func viewDidLoad() {
     
@@ -60,7 +61,7 @@ class JoinLeagueViewController: UIViewController {
                         print(leaguec)
                         if (leaguec == code && found == false) {
                             print("got to here with \(leaguec)")
-                            self.ref.child("leagues").child("\(i)/users/\(users.count)").setValue(["email":self.email])
+                            self.ref.child("leagues").child("\(i)/users/\(users.count)").setValue(["username":self.username])
                             found = true
                             let alertController = UIAlertController(title: nil, message: "Successfully joined league.", preferredStyle: .alert)
                             alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { _ in

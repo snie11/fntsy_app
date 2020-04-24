@@ -21,6 +21,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     private let refreshControl = UIRefreshControl()
     let cellReuseIdentifier = "LeagueCell"
     var email : String = ""
+    var username : String = ""
     @IBOutlet var tableView : UITableView!
     var dbManager : FirebaseDataManager?
     var resultleagues : [String] = []
@@ -83,10 +84,12 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         if segue.identifier == "DashboardtoCreateLeague" {
             let detailVC = destinationVC as! NewLeagueViewController
             detailVC.email = email
+            detailVC.username = username
             print("DashboardtoCreateLeague with email \(email)")
         } else if segue.identifier == "DashboardtoJoinLeague" {
             let detailVC = destinationVC as! JoinLeagueViewController
             detailVC.email = email
+            detailVC.username = username
         } else if segue.identifier == "DashboardtoLeagueDash" {
             let detailVC = destinationVC as! LeagueDashboardViewController
             detailVC.id = currentLeague
@@ -136,8 +139,21 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     private func getLeagues(_ sender: UIRefreshControl) {
+            self.ref = Database.database().reference()
+        refHandle = ref.child("users").observe(DataEventType.value, with: { (snapshot) in
+            if let users = snapshot.value as? [NSDictionary] {
+                for user in users {
+                    if let email = user["email"] as? String, let u = user["username"] as? String {
+                        if (email == self.email) {
+                            print("found username \(u)")
+                            self.username = u
+                        }
+                    }
+                }
+            }
+        })
+        
 //        self.resultleagues = ["Survivor Family League", "OT Fantasy League"]
-        self.ref = Database.database().reference()
         print("got to getleagues")
         self.refHandle = self.ref.child("leagues").observe(DataEventType.value, with: { (snapshot) in
             if let leagues = snapshot.value as? [NSDictionary] {
@@ -147,8 +163,8 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
                     if let users = league["users"] as? [NSDictionary] {
                         print("got users")
                         for user in users {
-                            if let em = user["email"] as? String {
-                                if (em == self.email) {
+                            if let em = user["username"] as? String {
+                                if (em == self.username) {
                                     if let leagueCode = league["leaguename"] as? String, let leagueName = league["leaguecode"] {
                                         print("mapping \(self.resultleagues.count) as \(i)")
                                         self.map[self.resultleagues.count] = i

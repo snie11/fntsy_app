@@ -19,6 +19,8 @@ class LoginViewController: UIViewController {
     @IBOutlet var passwordTextField : UITextField?
     var username : String = ""
     var passText: String?
+    var ref: DatabaseReference!
+    var refHandle: DatabaseHandle!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +31,7 @@ class LoginViewController: UIViewController {
         emailTextField?.autocorrectionType = .no
         passwordTextField?.autocorrectionType = .no
         passwordTextField?.isSecureTextEntry = true
+        ref = Database.database().reference()
     }
     
     @IBAction func loginUser() {
@@ -54,10 +57,12 @@ class LoginViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination as UIViewController
+        var usrnm : String = ""
+        
         if segue.identifier == "loginToDashboard" {
             let detailVC = destinationVC as! DashboardViewController
             detailVC.email = emailTextField!.text!
-            print("toDashboard with email \(emailTextField!.text)")
+            print("toDashboard with email \(username)")
         }
         
         

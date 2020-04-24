@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 protocol PointRefresher: class {
-    func refreshPoints()
+    func refreshPoints(league : League)
 }
 
 class PlayerDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
@@ -47,6 +47,8 @@ class PlayerDetailViewController: UIViewController, UITableViewDelegate, UITable
         dismissPickerView()
         ref = Database.database().reference()
         currPlayer = league!.players[playerid!]
+        team.text = currPlayer?.playerteam
+        selectedTeam = currPlayer?.playerteam
     }
     
     @IBAction func onClick(_sender : UIButton) {
@@ -65,7 +67,8 @@ class PlayerDetailViewController: UIViewController, UITableViewDelegate, UITable
                 self.ref.child("leagues").child("\(self.leagueid!)").child("players").child("\(self.playerid!)").child("totalpts").setValue(self.currPlayer!.totalpoints)
                 
                 self.tableView.reloadData()
-                self.delegate?.refreshPoints()
+                self.league!.players[self.playerid!] = self.currPlayer!
+                self.delegate?.refreshPoints(league: self.league!)
             }
         }
         
@@ -76,22 +79,28 @@ class PlayerDetailViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     @IBAction func saveChanges(_sender : UIButton) {
-        var usrnm : String = ""
+        self.delegate?.refreshPoints(league: self.league!)
+        self.currPlayer?.playerteam = self.selectedTeam!
+        self.league!.players[self.playerid!] = self.currPlayer!
+        self.delegate?.refreshPoints(league: self.league!)
+//        var usrnm : String = ""
         if let test = self.selectedTeam as? String {
-            print(self.selectedTeam!)
-            refHandle = ref.child("users").observe(DataEventType.value, with: { (snapshot) in
-                if let users = snapshot.value as? [NSDictionary] {
-                    for user in users {
-                        if let email = user["email"] as? String, let username = user["username"] as? String {
-                            if (email == self.selectedTeam!) {
-                                usrnm = username
-                                print(usrnm)
-                                self.ref.child("leagues").child("\(self.leagueid!)").child("players").child("\(self.playerid!)").child("team").setValue(usrnm)
-                            }
-                        }
-                    }
-                }
-            })
+            self.ref.child("leagues").child("\(self.leagueid!)").child("players").child("\(self.playerid!)").child("team").setValue(self.selectedTeam!)
+            
+//            print(self.selectedTeam!)
+//            refHandle = ref.child("users").observe(DataEventType.value, with: { (snapshot) in
+//                if let users = snapshot.value as? [NSDictionary] {
+//                    for user in users {
+//                        if let email = user["email"] as? String, let username = user["username"] as? String {
+//                            if (email == self.selectedTeam!) {
+//                                usrnm = username
+//                                print(usrnm)
+//                                self.ref.child("leagues").child("\(self.leagueid!)").child("players").child("\(self.playerid!)").child("team").setValue(usrnm)
+//                            }
+//                        }
+//                    }
+//                }
+//            })
         }
     }
 

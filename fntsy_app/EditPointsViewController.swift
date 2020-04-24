@@ -54,9 +54,10 @@ class EditPointsViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView.reloadData()
     }
     
-    func refreshPoints() {
+    func refreshPoints(league l : League) {
+        league = l
         tableView.reloadData()
-        delegate?.refreshPoints()
+        delegate?.refreshPoints(league:l)
     }
     
     func setupTableView() {
@@ -116,9 +117,9 @@ class EditPointsViewController: UIViewController, UITableViewDelegate, UITableVi
             var playernum : Int = self.league!.players.count
             print(playernum)
             print("\(self.leagueid!)")
-            self.ref.child("leagues").child("\(self.leagueid!)").child("players").child("\(playernum)").setValue(["name": name!, "description":description!, "totalpts": 0])
+            self.ref.child("leagues").child("\(self.leagueid!)").child("players").child("\(playernum)").setValue(["name": name!, "description":description!, "totalpts": 0, "team": ""])
             
-            self.league?.players.append(player)
+            self.league!.players.append(player)
             self.tableView.reloadData()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil )
@@ -128,6 +129,7 @@ class EditPointsViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     private func refreshPlayers(_ sender: UIRefreshControl) {
+        print("edit points is refreshing")
         sender.beginRefreshing()
         getPlayers(sender)
     }

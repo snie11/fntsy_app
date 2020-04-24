@@ -36,6 +36,7 @@ class InviteFriendsViewController: UIViewController {
     var league : League?
     var id : Int = 100
     var email : String = ""
+    var username : String = ""
     
     override func viewDidLoad() {
     
@@ -65,7 +66,7 @@ class InviteFriendsViewController: UIViewController {
         
         var j = 0
         for user in league!.users {
-            ref.child("leagues").child("\(id)/users").child("\(j)").setValue(["email": user])
+            ref.child("leagues").child("\(id)/users").child("\(j)").setValue(["username": user])
             j += 1
         }
         
@@ -78,6 +79,7 @@ class InviteFriendsViewController: UIViewController {
             // send whole league object
             let detailVC = destinationVC as! DashboardViewController
             detailVC.email = email
+            detailVC.username = self.username
 //            detailVC.leaguename = leaguename!.text!
 //            detailVC.leaguename = leaguecode!.text!
             print("toDashboard with new league")

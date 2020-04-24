@@ -81,6 +81,7 @@ class SignupViewController: UIViewController {
         if segue.identifier == "signupToDashboard" {
             let detailVC = destinationVC as! DashboardViewController
             detailVC.email = emailTextField!.text!
+            detailVC.username = nameTextField!.text!
             print("toDashboard with email \(emailTextField!.text)")
         }
         
